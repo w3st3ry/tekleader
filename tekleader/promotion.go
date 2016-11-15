@@ -6,6 +6,7 @@ import (
 	"log"
 	"net/http"
 	"strconv"
+	"time"
 )
 
 const apiOffset = 48
@@ -43,12 +44,11 @@ func getPromotion(offset int) *Promotion {
 			"/user/filter/user"+
 			jsonFormat+
 			"&location=FR/LYN"+
-			"&year=2016"+
+			"&year="+strconv.Itoa(time.Now().Year())+
 			"&course=bachelor/classic"+
 			"&active=true"+
-			"&promo=tek3"+
-			"&offset="+
-			strconv.Itoa(offset), nil)
+			"&promo=tek2"+
+			"&offset="+strconv.Itoa(offset), nil)
 	if err != nil {
 		log.Fatal(err)
 	}
