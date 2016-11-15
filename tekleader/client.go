@@ -5,4 +5,7 @@ const (
 	jsonFormat string = "?format=json"
 )
 
-var AuthKey string
+var (
+	AuthKey string
+	Race    bool
+)

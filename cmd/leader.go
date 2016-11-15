@@ -9,6 +9,8 @@ import (
 
 func init() {
 	RootCmd.AddCommand(leaderCmd)
+
+	setLeaderFlags()
 }
 
 // leaderCmd represents the leader command
@@ -20,4 +22,12 @@ var leaderCmd = &cobra.Command{
 	Run: func(cmd *cobra.Command, args []string) {
 		tekleader.PrintLeader(tekleader.SortPromotion())
 	},
+}
+
+func setLeaderFlags() {
+	flags := leaderCmd.PersistentFlags()
+
+	flags.BoolVar(&tekleader.Race, "race", false, "Enable race condition to print users")
+
+	leaderCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
 }

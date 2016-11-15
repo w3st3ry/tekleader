@@ -29,7 +29,7 @@ func IntraIsAlive() {
 		if err != nil {
 			color.Red("[%s] - Intranet is down... ./fixBocal.exe :noel:\n", t.Format(time.Stamp))
 		} else {
-			color.Green("[%s] - Intranet is alive :hap:\n", t.Format(time.Stamp))
+			color.Green("[%s] - Intranet is alive :hap:\n\n", t.Format(time.Stamp))
 			break
 		}
 	}

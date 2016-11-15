@@ -19,7 +19,7 @@ func init() {
 	log.SetFormatter(formatter)
 	log.SetOutput(os.Stdout)
 
-	setFlags()
+	setRootFlags()
 }
 
 // RootCmd represents the base command when called without any subcommands
@@ -50,7 +50,7 @@ var RootCmd = &cobra.Command{
 	},
 }
 
-func setFlags() {
+func setRootFlags() {
 	flags := RootCmd.PersistentFlags()
 
 	// Global flags
