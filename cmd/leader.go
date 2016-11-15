@@ -27,7 +27,10 @@ var leaderCmd = &cobra.Command{
 func setLeaderFlags() {
 	flags := leaderCmd.PersistentFlags()
 
+	// Custom flags
 	flags.BoolVar(&tekleader.Race, "race", false, "Enable race condition to print users")
+	flags.StringVar(&tekleader.Location, "location", "LYN", "Set your city (Default: Lyon)")
+	flags.StringVar(&tekleader.Promo, "promotion", "tek2", "Set your promotion (Default: tek2)")
 
 	leaderCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
 }

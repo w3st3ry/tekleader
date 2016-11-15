@@ -9,7 +9,7 @@ import (
 	"time"
 )
 
-const apiOffset = 48
+var apiOffset int
 
 type Promotion struct {
 	Items []struct {
@@ -22,9 +22,19 @@ type Promotion struct {
 	Total int `json:"total"`
 }
 
+// AppendPromotion fetch students obstruct API offset
 func AppendPromotion() *Promotion {
+	// Init promotion structs
 	aprom := &Promotion{}
 	prom := aprom
+
+	// Get apiOffset, abort if parameters are wrongs
+	apiOffset = len(getPromotion(0).Items)
+	if apiOffset < 1 {
+		log.Fatal("Wrong parameters")
+	}
+
+	// Fetch and append data in new array
 	for i := 0; ; i += apiOffset {
 		prom = getPromotion(i)
 		if len(prom.Items) == 0 {
@@ -32,10 +42,14 @@ func AppendPromotion() *Promotion {
 		}
 		aprom.Items = append(aprom.Items, prom.Items...)
 	}
+
+	// Set total of students
 	aprom.Total = prom.Total
+
 	return aprom
 }
 
+// getPromotion fetch students using parameters given
 func getPromotion(offset int) *Promotion {
 	prom := Promotion{}
 	req, err := http.NewRequest("GET",
@@ -43,11 +57,11 @@ func getPromotion(offset int) *Promotion {
 			AuthKey+
 			"/user/filter/user"+
 			jsonFormat+
-			"&location=FR/LYN"+
+			"&location=FR/"+Location+
 			"&year="+strconv.Itoa(time.Now().Year())+
 			"&course=bachelor/classic"+
 			"&active=true"+
-			"&promo=tek2"+
+			"&promo="+Promo+
 			"&offset="+strconv.Itoa(offset), nil)
 	if err != nil {
 		log.Fatal(err)

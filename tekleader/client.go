@@ -6,6 +6,12 @@ const (
 )
 
 var (
+	// AuthKey represents the auth token
 	AuthKey string
-	Race    bool
+	// Race represents the boolean to active/disable race conditon
+	Race bool
+	// Location represents the promotion location you want sort
+	Location string
+	// Promo represents the promotion you want sort
+	Promo string
 )
