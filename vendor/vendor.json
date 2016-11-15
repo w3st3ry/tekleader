@@ -3,22 +3,34 @@
 	"ignore": "test",
 	"package": [
 		{
-			"checksumSHA1": "2avCvSn0XonfApKKuTMyiQmk7s0=",
+			"checksumSHA1": "z9ckOyaoHErgXLQDx514AOMxdeo=",
 			"path": "github.com/Sirupsen/logrus",
-			"revision": "3ec0642a7fb6488f65b06f9040adc67e3990296a",
-			"revisionTime": "2016-08-29T20:23:21Z"
+			"revision": "abc6f20dabf4b10195f233ad21ea6c5ba33acae0",
+			"revisionTime": "2016-11-11T12:09:51Z"
 		},
 		{
-			"checksumSHA1": "lEuAuEXh42xoG+Ygw90K3EF99Xo=",
+			"checksumSHA1": "x77xUarDfVxctJMAJPCQzlYk8JM=",
 			"path": "github.com/fatih/color",
-			"revision": "dea9d3a26a087187530244679c1cfb3a42937794",
-			"revisionTime": "2016-10-02T08:12:59Z"
+			"revision": "bf82308e8c8546dc2b945157173eb8a959ae9505",
+			"revisionTime": "2016-10-25T12:05:01Z"
 		},
 		{
 			"checksumSHA1": "olBUAoUXwntKyblqT7VE1zvINBo=",
 			"path": "github.com/fsnotify/fsnotify",
 			"revision": "629574ca2a5df945712d3079857300b5e4da0236",
 			"revisionTime": "2016-10-11T02:33:12Z"
+		},
+		{
+			"checksumSHA1": "5+cRIgrrCwJ/BhOG34jUcNyvDPI=",
+			"path": "github.com/google/go-github/github",
+			"revision": "d4f1b2d029be1730fd349ca929cc9c0da4a27007",
+			"revisionTime": "2016-11-14T19:06:42Z"
+		},
+		{
+			"checksumSHA1": "yyAzHoiVLu+xywYI2BDyRq6sOqE=",
+			"path": "github.com/google/go-querystring/query",
+			"revision": "9235644dd9e52eeae6fa48efd539fdc351a0af53",
+			"revisionTime": "2016-03-11T01:20:12Z"
 		},
 		{
 			"checksumSHA1": "8OPDk+bKyRGJoKcS4QNw9F7dpE8=",
@@ -159,10 +171,10 @@
 			"revisionTime": "2016-09-26T08:42:49Z"
 		},
 		{
-			"checksumSHA1": "BqUqNg3UuaPTse8Vg+xR/zW6tKw=",
+			"checksumSHA1": "FZ0r4TzEy9UxXLkFVXFygApni4M=",
 			"path": "github.com/spf13/cobra",
-			"revision": "ec2fe7859914a5106dcab4e7901633d959bfc2f4",
-			"revisionTime": "2016-10-10T15:14:18Z"
+			"revision": "6e91dded25d73176bf7f60b40dd7aa1f0bf9be8d",
+			"revisionTime": "2016-10-26T01:28:26Z"
 		},
 		{
 			"checksumSHA1": "dkruahfhuLXXuyeCuRpsWlcRK+8=",
@@ -177,10 +189,10 @@
 			"revisionTime": "2016-10-11T12:08:26Z"
 		},
 		{
-			"checksumSHA1": "k9qGfPuWFXBryrHbOsWCrH402Eg=",
+			"checksumSHA1": "802GjFNHMmnFXEIkQ137ucUUacI=",
 			"path": "github.com/spf13/viper",
-			"revision": "c14ce6d43cf5e22e2bd44938f3f45a2761c18350",
-			"revisionTime": "2016-10-12T09:40:13Z"
+			"revision": "651d9d916abc3c3d6a91a12549495caba5edffd2",
+			"revisionTime": "2016-10-29T21:33:52Z"
 		},
 		{
 			"checksumSHA1": "h+pFYiRHBogczS8/F1NoN3Ata44=",
@@ -247,6 +259,10 @@
 			"path": "golang.org/x/text/unicode/norm",
 			"revision": "afa951a3250e0e2195be7366207189f3184d3fe1",
 			"revisionTime": "2016-10-06T11:26:12Z"
+		},
+		{
+			"path": "gopkg.in/cheggaaa/pv.v1",
+			"revision": ""
 		},
 		{
 			"checksumSHA1": "12GqsW8PiRPnezDDy0v4brZrndM=",
