@@ -261,6 +261,12 @@
 			"revisionTime": "2016-10-06T11:26:12Z"
 		},
 		{
+			"checksumSHA1": "dSv7yfmuh8D1JZ07khtSmVeKIJo=",
+			"path": "gopkg.in/cheggaaa/pb.v1",
+			"revision": "dd61faab99a777c652bb680e37715fe0cb549856",
+			"revisionTime": "2016-10-26T15:03:33Z"
+		},
+		{
 			"path": "gopkg.in/cheggaaa/pv.v1",
 			"revision": ""
 		},
