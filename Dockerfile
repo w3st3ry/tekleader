@@ -11,4 +11,6 @@ RUN govendor sync
 
 RUN go install
 
-ENTRYPOINT tekleader
+ENTRYPOINT ["tekleader"]
+
+CMD ["leader"]
