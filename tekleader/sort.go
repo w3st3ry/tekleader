@@ -40,12 +40,15 @@ func SortPromotion() *SortStudents {
 		quitChan <- true
 	}(&processed, total)
 
-	// Fetching gpa from login
-	for i := 0; i < total; i++ {
+	// Fetching gpa from login, warn to your socket
+	for i := 0; i < total/5; i++ {
 		go func() {
 			for {
 				login := <-input
 				std := GetStudent(login)
+				if std.Gpa[0].Gpa == "n/a" {
+					std.Gpa[0].Gpa = "0.00"
+				}
 				result <- SortStudent{Login: std.Login, Gpa: std.Gpa[0].Gpa}
 			}
 		}()

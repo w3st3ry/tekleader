@@ -59,7 +59,7 @@ func getPromotion(offset int) *Promotion {
 			jsonFormat+
 			"&location=FR/"+Location+
 			"&year="+strconv.Itoa(time.Now().Year())+
-			"&course=bachelor/classic"+
+			"&course="+Course+"/classic"+
 			"&active=true"+
 			"&promo="+Promo+
 			"&offset="+strconv.Itoa(offset), nil)

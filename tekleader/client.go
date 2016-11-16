@@ -14,4 +14,6 @@ var (
 	Location string
 	// Promo represents the promotion you want sort
 	Promo string
+	// Course represents the course of the student
+	Course string
 )

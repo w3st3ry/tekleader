@@ -20,6 +20,7 @@ var leaderCmd = &cobra.Command{
 	Long: "leader establish a rank betwen {EPITECH} students" +
 		" from the same promotion or city.",
 	Run: func(cmd *cobra.Command, args []string) {
+		setTekCourse()
 		tekleader.PrintLeader(tekleader.SortPromotion())
 	},
 }
@@ -33,4 +34,14 @@ func setLeaderFlags() {
 	flags.StringVar(&tekleader.Promo, "promotion", "tek2", "Set your promotion (Default: tek2)")
 
 	leaderCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
+}
+
+// Change course for tek3+
+func setTekCourse() {
+	p := tekleader.Promo
+	if p == "tek4" || p == "tek5" {
+		tekleader.Course = "master"
+	} else {
+		tekleader.Course = "bachelor"
+	}
 }
