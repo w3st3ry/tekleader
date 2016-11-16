@@ -1,0 +1,17 @@
+language: go
+
+go:
+  - 1.7
+  - tip
+
+os:
+  - linux
+
+before_install:
+  - go get -u github.com/kardianos/govendor
+  - govendor sync
+
+install: true
+
+script:
+  - go install
