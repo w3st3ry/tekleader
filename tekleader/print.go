@@ -2,8 +2,9 @@ package tekleader
 
 import (
 	"fmt"
+	"time"
 
-	_ "github.com/fatih/color"
+	"github.com/fatih/color"
 )
 
 func PrintLeader(students *SortStudents) {
@@ -20,5 +21,24 @@ func PrintLeader(students *SortStudents) {
 				std.Gpa[0].Gpa)
 		}
 		fmt.Printf("[%d/%d] - %s", total-i, total, format)
+	}
+}
+
+func PrintStatus(persistent bool) {
+	for {
+		err := extendedTimeoutRequest()
+		t := time.Now()
+		clock := fmt.Sprintf("[%s] - ", t.Format(time.Stamp))
+
+		if err != nil {
+			color.Red(clock + "Intranet is down... ./fixbocal.exe :noel:\n")
+		} else {
+			color.Green(clock + "Intranet is alive :hap:")
+			time.Sleep(time.Second * time.Duration(Timeout))
+			if !persistent {
+				fmt.Println("\n\n")
+				break
+			}
+		}
 	}
 }

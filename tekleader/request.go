@@ -3,8 +3,6 @@ package tekleader
 import (
 	"net/http"
 	"time"
-
-	"github.com/fatih/color"
 )
 
 var Timeout int
@@ -20,19 +18,6 @@ func extendedTimeoutRequest() error {
 	}
 
 	return nil
-}
-
-func IntraIsAlive() {
-	for {
-		err := extendedTimeoutRequest()
-		t := time.Now()
-		if err != nil {
-			color.Red("[%s] - Intranet is down... ./fixBocal.exe :noel:\n", t.Format(time.Stamp))
-		} else {
-			color.Green("[%s] - Intranet is alive :hap:\n\n", t.Format(time.Stamp))
-			break
-		}
-	}
 }
 
 func getResRequest(req *http.Request) (*http.Response, error) {

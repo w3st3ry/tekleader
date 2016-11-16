@@ -29,15 +29,18 @@ var RootCmd = &cobra.Command{
 		" a rank between {EPITECH} students, and much more.",
 	Long: "",
 	PersistentPreRun: func(cmd *cobra.Command, args []string) {
+		// Check timeout value
+		if tekleader.Timeout < 1 {
+			log.Fatal(errors.New("Timeout must be > 1"))
+		}
+
+		// Skip auth for defined commands
 		if skipAuth(cmd.Name()) {
 			return
 		}
 
 		// Check if intranet is alive before call any endpoints
-		if tekleader.Timeout < 1 {
-			log.Fatal(errors.New("Timeout must be > 1"))
-		}
-		tekleader.IntraIsAlive()
+		tekleader.PrintStatus(false)
 
 		// Use autkey in cfgfile or env if exist
 		tekleader.AuthKey = viper.GetString("tek_authkey")
@@ -66,7 +69,7 @@ func setRootFlags() {
 
 // skipAuth match commands who won't need authentication
 func skipAuth(command string) bool {
-	deny := [1]string{"version"}
+	deny := [2]string{"version", "status"}
 	for _, key := range deny {
 		if key == command {
 			return true
