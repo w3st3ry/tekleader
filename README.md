@@ -27,7 +27,7 @@ Just a student who wants to add new cool stuff and features using intranet api.
 
 ## Installation
 
-You have two ways to get it:
+You have three ways to get it:
 
 - Go get the app 
 
@@ -41,7 +41,7 @@ go get github.com/w3st3ry/tekleader
 docker build -t tekleader .
 ```
 
-And soon, just install the binary given in releases.
+- Download the last release according your OS [here](https://github.com/w3st3ry/tekleader/releases).
 
 ## Configuration
 
