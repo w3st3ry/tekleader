@@ -1,4 +1,4 @@
 package tekleader
 
 // Current Version of tekleader
-const Version = ""
+const Version = "0.1.0"
