@@ -5,6 +5,7 @@ import (
 	"net/http"
 )
 
+// Check if AuthKey is valid
 func Auth() error {
 	req, err := http.NewRequest("GET", intraURL+AuthKey+"/user", nil)
 	if err != nil {

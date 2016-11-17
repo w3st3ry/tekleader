@@ -1,7 +1,7 @@
 package cmd
 
 import (
-	_ "fmt"
+	"strings"
 
 	"github.com/spf13/cobra"
 	"github.com/w3st3ry/tekleader/tekleader"
@@ -21,6 +21,7 @@ var leaderCmd = &cobra.Command{
 		" from the same promotion or city.",
 	Run: func(cmd *cobra.Command, args []string) {
 		setTekCourse()
+		formatCities()
 		tekleader.PrintLeader(tekleader.SortPromotion())
 	},
 }
@@ -30,8 +31,8 @@ func setLeaderFlags() {
 
 	// Custom flags
 	flags.BoolVar(&tekleader.Race, "race", false, "Enable race condition to print users")
-	flags.StringVar(&tekleader.Location, "location", "LYN", "Set your city (Default: Lyon)")
-	flags.StringVar(&tekleader.Promo, "promotion", "tek2", "Set your promotion (Default: tek2)")
+	flags.StringVar(&tekleader.Location, "location", "lyon", "Set your city")
+	flags.StringVar(&tekleader.Promo, "promotion", "tek2", "Set your promotion")
 
 	leaderCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
 }
@@ -43,5 +44,29 @@ func setTekCourse() {
 		tekleader.Course = "master"
 	} else {
 		tekleader.Course = "bachelor"
+	}
+}
+
+func formatCities() {
+	f := strings.ToLower(tekleader.Location)
+	cities := map[string]string{
+		"lyon":        "LYN",
+		"paris":       "PAR",
+		"bordeaux":    "BDX",
+		"marseille":   "MAR",
+		"lille":       "LIL",
+		"montpellier": "MPL",
+		"nancy":       "NCY",
+		"nantes":      "NAN",
+		"nice":        "NCE",
+		"rennes":      "REN",
+		"strasbourg":  "STG",
+		"toulouse":    "TLS",
+	}
+	for key, city := range cities {
+		if key == f {
+			tekleader.Location = city
+			return
+		}
 	}
 }

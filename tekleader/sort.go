@@ -19,7 +19,7 @@ func SortPromotion() *SortStudents {
 	oldProm := AppendPromotion()
 	total := oldProm.Total
 
-	var newProm SortStudents
+	newProm := SortStudents{}
 
 	input := make(chan string, total)
 	result := make(chan SortStudent, total)

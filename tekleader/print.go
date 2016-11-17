@@ -15,7 +15,7 @@ func PrintLeader(students *SortStudents) {
 			format = fmt.Sprintf("%s \t\t| GPA: %s\n", student.Login, student.Gpa)
 		} else {
 			std := GetStudent(student.Login)
-			format = fmt.Sprintf("%s \t\t| %s | %s credits | GPA: %s\n", std.Title,
+			format = fmt.Sprintf("%s \t\t| %s | %d credits | GPA: %s\n", std.Title,
 				std.Location,
 				std.Credits,
 				std.Gpa[0].Gpa)
@@ -36,7 +36,7 @@ func PrintStatus(persistent bool) {
 			color.Green(clock + "Intranet is alive :hap:")
 			time.Sleep(time.Second * time.Duration(Timeout))
 			if !persistent {
-				fmt.Println("\n\n")
+				fmt.Println("\n")
 				break
 			}
 		}

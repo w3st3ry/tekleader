@@ -3,8 +3,9 @@ package tekleader
 import (
 	"encoding/json"
 	"io/ioutil"
-	"log"
 	"net/http"
+
+	log "github.com/Sirupsen/logrus"
 )
 
 type Students []Student

@@ -21,7 +21,7 @@ func init() {
 
 var versionCmd = &cobra.Command{
 	Use:   "version",
-	Short: "Prints the svfs version and any available update",
+	Short: "Prints the tekleader version and any available update",
 	Long: "Display information about current tekleader version\n" +
 		"and check if a new release is available on GitHub.",
 	RunE: func(cmd *cobra.Command, args []string) error {
@@ -56,7 +56,6 @@ func printRelease(release *github.RepositoryRelease, err error) {
 	}
 
 	print := fmt.Printf
-
 	print("* Release name: %s\n", *release.Name)
 	print("* Related git tag: %s\n", *release.TagName)
 	print("* Stable release: %s\n", !*release.Prerelease)
