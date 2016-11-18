@@ -18,7 +18,7 @@ func Auth() error {
 	}
 
 	if res.StatusCode != 200 {
-		return errors.New("Wrong AuthKey - Visit https://intra.epitech.eu/admin/autolog \n")
+		return errors.New("Wrong AuthKey - Visit https://intra.epitech.eu/admin/autolog")
 	}
 
 	return nil

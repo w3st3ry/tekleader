@@ -16,4 +16,6 @@ var (
 	Promo string
 	// Course represents the course of the student
 	Course string
+	// Find represents the student you want to find
+	Find string
 )

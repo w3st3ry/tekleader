@@ -9,7 +9,6 @@ import (
 
 func init() {
 	RootCmd.AddCommand(leaderCmd)
-
 	setLeaderFlags()
 }
 
@@ -22,6 +21,7 @@ var leaderCmd = &cobra.Command{
 	Run: func(cmd *cobra.Command, args []string) {
 		setTekCourse()
 		formatCities()
+		formatFind()
 		tekleader.PrintLeader(tekleader.SortPromotion())
 	},
 }
@@ -33,6 +33,7 @@ func setLeaderFlags() {
 	flags.BoolVar(&tekleader.Race, "race", false, "Enable race condition to print users")
 	flags.StringVar(&tekleader.Location, "location", "lyon", "Set your city")
 	flags.StringVar(&tekleader.Promo, "promotion", "tek2", "Set your promotion")
+	flags.StringVar(&tekleader.Find, "find", "", "The student you want to find by login")
 
 	leaderCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
 }
@@ -66,7 +67,16 @@ func formatCities() {
 	for key, city := range cities {
 		if key == f {
 			tekleader.Location = city
-			return
+			break
 		}
+	}
+}
+
+func formatFind() {
+	f := strings.ToLower(tekleader.Find)
+	f = strings.Trim(f, " ")
+	f = strings.Replace(f, " ", ".", -1)
+	if !strings.Contains(f, "@epitech.eu") {
+		tekleader.Find = f + "@epitech.eu"
 	}
 }

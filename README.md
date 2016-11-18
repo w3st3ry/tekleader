@@ -72,6 +72,7 @@ If you use this app in a container, you must share the file or expose env variab
 * `location`: set your city (default: lyon).
 * `promotion`: set your promotion (default: tek2).
 * `race`: enable race condition to print users (default: false).
+* `find`: find student by login or first name/last name
 
 ## Hacking
 

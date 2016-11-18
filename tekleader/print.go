@@ -10,17 +10,29 @@ import (
 func PrintLeader(students *SortStudents) {
 	total := len(*students)
 	var format string
+
+	// Iterate on all sorted students
 	for i, student := range *students {
-		if Race {
-			format = fmt.Sprintf("%s \t\t| GPA: %s\n", student.Login, student.Gpa)
-		} else {
-			std := GetStudent(student.Login)
-			format = fmt.Sprintf("%s \t\t| %s | %d credits | GPA: %s\n", std.Title,
-				std.Location,
-				std.Credits,
-				std.Gpa[0].Gpa)
+
+		// If Find flag is set, print only the student you want to find
+		if Find == "" || (Find != "" && student.Login == Find) {
+
+			// If Race is set, print only the login and don't send new request on /user
+			if Race {
+				format = fmt.Sprintf("%s \t\t| GPA: %s\n", student.Login, student.Gpa)
+			} else {
+				std := GetStudent(student.Login)
+				format = fmt.Sprintf("%s \t\t| %s | %d credits | GPA: %s\n", std.Title,
+					std.Location,
+					std.Credits,
+					std.Gpa[0].Gpa)
+			}
+			fmt.Printf("[%d/%d] - %s", total-i, total, format)
 		}
-		fmt.Printf("[%d/%d] - %s", total-i, total, format)
+	}
+
+	if format == "" {
+		color.Red("%s not found.\n", Find)
 	}
 }
 
@@ -36,7 +48,6 @@ func PrintStatus(persistent bool) {
 			color.Green(clock + "Intranet is alive :hap:")
 			time.Sleep(time.Second * time.Duration(Timeout))
 			if !persistent {
-				fmt.Println("\n")
 				break
 			}
 		}
