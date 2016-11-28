@@ -41,7 +41,7 @@ func SortPromotion() *SortStudents {
 	}(&processed, total)
 
 	// Fetching gpa from login, warn to your socket
-	for i := 0; i < total/5; i++ {
+	for i := 0; i < total; i++ {
 		go func() {
 			for {
 				login := <-input

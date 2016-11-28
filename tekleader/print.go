@@ -2,6 +2,7 @@ package tekleader
 
 import (
 	"fmt"
+	str "strings"
 	"time"
 
 	"github.com/fatih/color"
@@ -9,30 +10,37 @@ import (
 
 func PrintLeader(students *SortStudents) {
 	total := len(*students)
-	var format string
+	format := ""
+	logins := splitLogins(Find)
 
 	// Iterate on all sorted students
 	for i, student := range *students {
 
 		// If Find flag is set, print only the student you want to find
-		if Find == "" || (Find != "" && student.Login == Find) {
+		for x, login := range logins {
+			if login == "" || (login != "" && student.Login == login) {
 
-			// If Race is set, print only the login and don't send new request on /user
-			if Race {
-				format = fmt.Sprintf("%s \t\t| GPA: %s\n", student.Login, student.Gpa)
-			} else {
-				std := GetStudent(student.Login)
-				format = fmt.Sprintf("%s \t\t| %s | %d credits | GPA: %s\n", std.Title,
-					std.Location,
-					std.Credits,
-					std.Gpa[0].Gpa)
+				if login != "" {
+					logins = append(logins[:x], logins[x+1:]...)
+				}
+				// If Race is set, print only the login and don't send new request on /user
+				if Race {
+					format = fmt.Sprintf("%s \t\t| GPA: %s\n", student.Login, student.Gpa)
+				} else {
+					std := GetStudent(student.Login)
+					format = fmt.Sprintf("%s \t\t| %s | %d credits | GPA: %s\n", std.Title,
+						std.Location,
+						std.Credits,
+						std.Gpa[0].Gpa)
+				}
+				fmt.Printf("[%d/%d] - %s", total-i, total, format)
 			}
-			fmt.Printf("[%d/%d] - %s", total-i, total, format)
 		}
 	}
 
-	if format == "" {
-		color.Red("%s not found.\n", Find)
+	// Students not exist
+	for _, login := range logins {
+		color.Red("[WARN] %s not found.", login)
 	}
 }
 
@@ -52,4 +60,8 @@ func PrintStatus(persistent bool) {
 			}
 		}
 	}
+}
+
+func splitLogins(logins string) []string {
+	return str.Split(logins, ",")
 }

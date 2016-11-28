@@ -1,7 +1,7 @@
 package cmd
 
 import (
-	"strings"
+	str "strings"
 
 	"github.com/spf13/cobra"
 	"github.com/w3st3ry/tekleader/tekleader"
@@ -49,7 +49,6 @@ func setTekCourse() {
 }
 
 func formatCities() {
-	f := strings.ToLower(tekleader.Location)
 	cities := map[string]string{
 		"lyon":        "LYN",
 		"paris":       "PAR",
@@ -64,19 +63,37 @@ func formatCities() {
 		"strasbourg":  "STG",
 		"toulouse":    "TLS",
 	}
+	args := splitArgs(tekleader.Location)
+	fmtArgs := make([]string, len(args))
+
 	for key, city := range cities {
-		if key == f {
-			tekleader.Location = city
-			break
+		for i, arg := range args {
+			if key == arg {
+				fmtArgs[i] = city
+			}
 		}
 	}
+	tekleader.Location = str.Join(fmtArgs, "|")
 }
 
 func formatFind() {
-	f := strings.ToLower(tekleader.Find)
-	f = strings.Trim(f, " ")
-	f = strings.Replace(f, " ", ".", -1)
-	if !strings.Contains(f, "@epitech.eu") {
-		tekleader.Find = f + "@epitech.eu"
+	if len(tekleader.Find) == 0 {
+		return
 	}
+
+	args := splitArgs(tekleader.Find)
+	fmtArgs := make([]string, len(args))
+	for i, login := range args {
+		if !str.Contains(login, "@") {
+			fmtArgs[i] = login + "@epitech.eu"
+		} else {
+			fmtArgs[i] = login
+		}
+	}
+	tekleader.Find = str.Join(fmtArgs, ",")
+}
+
+func splitArgs(s string) []string {
+	s = str.Replace(str.ToLower(s), " ", "", -1)
+	return str.Split(s, ",")
 }
