@@ -39,8 +39,10 @@ func PrintLeader(students *SortStudents) {
 	}
 
 	// Students not exist
-	for _, login := range logins {
-		color.Red("[WARN] %s not found.", login)
+	if len(logins[0]) != 0 {
+		for _, login := range logins {
+			color.Red("[WARN] %s not found.", login)
+		}
 	}
 }
 

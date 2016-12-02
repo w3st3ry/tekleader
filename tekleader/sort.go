@@ -65,7 +65,7 @@ func SortPromotion() *SortStudents {
 	// Little hack to stop workers and continue
 	<-quitChan
 
-	bar.FinishPrint("\n * Next step * \n")
+	bar.FinishPrint("\n * Next step, sorting time * \n")
 
 	// Sort students given
 	sort.Sort(newProm)

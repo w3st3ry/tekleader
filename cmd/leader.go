@@ -69,7 +69,7 @@ func formatCities() {
 	for key, city := range cities {
 		for i, arg := range args {
 			if key == arg {
-				fmtArgs[i] = city
+				fmtArgs[i] = "FR/" + city
 			}
 		}
 	}

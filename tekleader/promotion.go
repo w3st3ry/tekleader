@@ -58,7 +58,7 @@ func getPromotion(offset int) *Promotion {
 			AuthKey+
 			"/user/filter/user"+
 			jsonFormat+
-			"&location=FR/"+Location+
+			"&location="+Location+
 			"&year="+strconv.Itoa(time.Now().Year())+
 			"&course="+Course+"/classic"+
 			"&active=true"+
