@@ -38,7 +38,7 @@ var versionCmd = &cobra.Command{
 		latest := releases[len(releases)-1]
 
 		if *current.TagName == *latest.TagName {
-			color.Green("Your version is ip to date.")
+			color.Green("Your version is up to date.")
 		} else {
 			color.Yellow("A new version is available:\n")
 			printRelease(latest, err)
