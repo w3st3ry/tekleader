@@ -2,12 +2,14 @@
 
 [![Build Status](https://travis-ci.org/w3st3ry/tekleader.svg?branch=master)](https://travis-ci.org/w3st3ry/tekleader)
 
-Tekleader is a POSIX compliant and multiplatforms CLI makes it possible to establish a rank between {EPITECH} students from any city and/or promotion, and much more.
+Tekleader is a POSIX compliant and multiplatforms CLI makes it
+possible to establish a rank between {EPITECH} students from any city
+and/or promotion, and much more.
 
 ## Disclaimer
 
-This is not an official project of EPITECH.
-Just a student who wants to add new cool stuff and features using intranet api.
+This is not an official project of EPITECH. Just a student who wants
+to add new cool stuff and features using intranet api.
 
 ## Features
 
@@ -29,7 +31,7 @@ Just a student who wants to add new cool stuff and features using intranet api.
 
 You have three ways to get it:
 
-- Go get the app 
+- Go get the app
 
 ```
 go get github.com/w3st3ry/tekleader
@@ -41,16 +43,21 @@ go get github.com/w3st3ry/tekleader
 docker build -t tekleader .
 ```
 
-- Download the last release according your OS [here](https://github.com/w3st3ry/tekleader/releases).
+- Download the last release according your OS
+  [here](https://github.com/w3st3ry/tekleader/releases).
 
 ## Configuration
 
-You just have to add the cfg file `.tekleader.yml` in `/etc/.` or `$HOME/.` with your personal authkey can be founded [here](https://intra.epitech.eu/admin/autolog) as the same format in exemple.
+You just have to add the cfg file `.tekleader.yml` in `/etc/.` or
+`$HOME/.` with your personal authkey can be founded
+[here](https://intra.epitech.eu/admin/autolog) as the same format in
+exemple.
 
-You can also set `TEK_AUTHKEY` as a env variable or directly as binary parameters.
+You can also set `TEK_AUTHKEY` as a env variable or directly as binary
+parameters.
 
-Warn:
-If you use this app in a container, you must share the file or expose env variable for authentication.
+Warn: If you use this app in a container, you must share the file or
+expose env variable for authentication.
 
 ## Usage
 
@@ -72,7 +79,8 @@ If you use this app in a container, you must share the file or expose env variab
 * `location`: set your city (default: lyon).
 * `promotion`: set your promotion (default: tek2).
 * `race`: enable race condition to print users (default: false).
-* `find`: find student by login or first name/last name (ex: valentin.pichard,solomon.hykes ...).
+* `find`: find student by login or first name/last name (ex:
+  valentin.pichard,solomon.hykes ...).
 
 ## Hacking
 
