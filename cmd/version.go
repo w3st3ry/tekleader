@@ -58,7 +58,7 @@ func printRelease(release *github.RepositoryRelease, err error) {
 	print := fmt.Printf
 	print("* Release name: %s\n", *release.Name)
 	print("* Related git tag: %s\n", *release.TagName)
-	print("* Stable release: %s\n", !*release.Prerelease)
+	print("* Stable release: %t\n", !*release.Prerelease)
 
 	if release.PublishedAt != nil && !release.PublishedAt.IsZero() {
 		print("* Release date: %s\n", *release.PublishedAt)
