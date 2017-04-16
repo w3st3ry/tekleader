@@ -63,17 +63,32 @@ func formatCities() {
 		"strasbourg":  "STG",
 		"toulouse":    "TLS",
 	}
-	args := splitArgs(tekleader.Location)
-	fmtArgs := make([]string, len(args))
+	if tekleader.Location == "*" {
+		fmtArgs := make([]string, len(cities))
 
-	for key, city := range cities {
-		for i, arg := range args {
-			if key == arg {
-				fmtArgs[i] = "FR/" + city
+		// Iterating on all cities
+		i := 0
+		for _, city := range cities {
+			fmtArgs[i] = "FR/" + city
+			i++
+		}
+
+		tekleader.Location = str.Join(fmtArgs, "|")
+	} else {
+		args := splitArgs(tekleader.Location)
+		fmtArgs := make([]string, len(args))
+
+		// Iterating on all given cities
+		for key, city := range cities {
+			for i, arg := range args {
+				if key == arg {
+					fmtArgs[i] = "FR/" + city
+				}
 			}
 		}
+
+		tekleader.Location = str.Join(fmtArgs, "|")
 	}
-	tekleader.Location = str.Join(fmtArgs, "|")
 }
 
 func formatFind() {

@@ -1,7 +1,9 @@
 package cmd
 
 import (
+	"context"
 	"fmt"
+	"time"
 
 	"github.com/fatih/color"
 	"github.com/google/go-github/github"
@@ -27,14 +29,17 @@ var versionCmd = &cobra.Command{
 	RunE: func(cmd *cobra.Command, args []string) error {
 		client := github.NewClient(nil)
 
+		ctx, cancel := context.WithTimeout(context.Background(), 1*time.Second)
+
 		color.White("Version information:\n")
-		current, _, err := client.Repositories.GetReleaseByTag(repOwner, projectName, cVersion)
+		current, _, err := client.Repositories.GetReleaseByTag(ctx, repOwner, projectName, cVersion)
 		printRelease(current, err)
 		if err != nil {
+			defer cancel()
 			return nil
 		}
 
-		releases, _, err := client.Repositories.ListReleases(repOwner, projectName, &github.ListOptions{PerPage: 1})
+		releases, _, err := client.Repositories.ListReleases(ctx, repOwner, projectName, &github.ListOptions{PerPage: 1})
 		latest := releases[len(releases)-1]
 
 		if *current.TagName == *latest.TagName {
@@ -45,6 +50,7 @@ var versionCmd = &cobra.Command{
 			color.Yellow("Visit %s for more information about tekleader", *latest.HTMLURL)
 		}
 
+		defer cancel()
 		return err
 	},
 }

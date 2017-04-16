@@ -21,7 +21,12 @@ func PrintLeader(students *SortStudents) {
 			if login == "" || (login != "" && student.Login == login) {
 
 				if login != "" {
-					logins = append(logins[:x], logins[x+1:]...)
+					if len(logins) > 1 {
+						logins = append(logins[:x], logins[x+1:]...)
+					} else {
+						// If the single login is find convort to an empty array
+						logins = []string{}
+					}
 				}
 				// If Race is set, print only the login and don't send new request on /user
 				if Race {
@@ -39,7 +44,7 @@ func PrintLeader(students *SortStudents) {
 	}
 
 	// Students not exist
-	if len(logins[0]) != 0 {
+	if len(logins) > 0 && Find != "" {
 		for _, login := range logins {
 			color.Red("[WARN] %s not found.", login)
 		}
