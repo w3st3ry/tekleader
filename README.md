@@ -51,7 +51,8 @@ docker build -t tekleader .
 You just have to add the configuration file `.tekleader.yml` in
 `/etc/.` or `$HOME/.` with your personal authkey (which can be found
 [here](https://intra.epitech.eu/admin/autolog)) written in the same
-format as in the example (without `https://intra.epitech.eu/`).
+format as in the example (without `https://intra.epitech.eu/`),
+[exemple here](https://github.com/w3st3ry/tekleader/blob/v0.1.0/.tekleader.yml).
 
 You can also set `TEK_AUTHKEY` as a env variable or directly as binary
 parameter.
@@ -76,9 +77,9 @@ or expose env variable for authentication.
 
 #### Leader options
 
-* `location`: set your city (default: lyon).
+* `location`: set your city (default: lyon), you can use wildcard to sort your promotion with every locations.
 * `promotion`: set your promotion (default: tek2).
-* `race`: enable race condition to print users (default: false).
+* `race`: enable race condition to print users (default: false) [ONLY FETCH GPA].
 * `find`: find student by login or first name/last name (ex:
   valentin.pichard, solomon.hykes ...).
 

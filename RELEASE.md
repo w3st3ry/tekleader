@@ -1,9 +1,14 @@
 # Changelog
 
-### v0.1.0
+### v0.2.0
 
 ### FEATURES:
 
-* Dynamic student GPA ranking from any city/promotion
-* Intranet status access
-* Dynamic API wrapper in Golang
+* Fix number max of goroutines (200)
+* Fix context with go-github import
+* Fix new login implementation
+* Add wildcard to test all locations in one exec
+* Fix year in intranet URI bc bigint dont update the endpoint
+* Use godep as vendoring tool
+* Fix find option if parameter is a single student
+* Update README.md

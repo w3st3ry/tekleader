@@ -18,4 +18,6 @@ var (
 	Course string
 	// Find represents the student you want to find
 	Find string
+	// Timeout represents the timeout to check is intra is alive
+	Timeout int
 )

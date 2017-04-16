@@ -18,6 +18,10 @@ func SortPromotion() *SortStudents {
 	// Get promotion only and set the total
 	oldProm := AppendPromotion()
 	total := oldProm.Total
+	goroutines := total
+	if total > 200 {
+		goroutines = 200
+	}
 
 	newProm := SortStudents{}
 
@@ -41,7 +45,7 @@ func SortPromotion() *SortStudents {
 	}(&processed, total)
 
 	// Fetching gpa from login, warn to your socket
-	for i := 0; i < total; i++ {
+	for i := 0; i < goroutines; i++ {
 		go func() {
 			for {
 				login := <-input
@@ -57,7 +61,7 @@ func SortPromotion() *SortStudents {
 				res := <-result
 				newProm = append(newProm, res)
 				bar.Increment()
-				*done += 1
+				*done++
 			}
 		}(&processed)
 	}

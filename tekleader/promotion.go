@@ -12,6 +12,7 @@ import (
 
 var apiOffset int
 
+// Promotion represent json fetched from the intranet
 type Promotion struct {
 	Items []struct {
 		Title    string `json:"title"`
@@ -52,18 +53,20 @@ func AppendPromotion() *Promotion {
 
 // getPromotion fetch students using parameters given
 func getPromotion(offset int) *Promotion {
-	prom := Promotion{}
+	prom := &Promotion{}
+
 	req, err := http.NewRequest("GET",
 		intraURL+
 			AuthKey+
 			"/user/filter/user"+
 			jsonFormat+
 			"&location="+Location+
-			"&year="+strconv.Itoa(time.Now().Year())+
+			"&year="+strconv.Itoa(time.Now().Year()-1)+
 			"&course="+Course+"/classic"+
 			"&active=true"+
 			"&promo="+Promo+
 			"&offset="+strconv.Itoa(offset), nil)
+
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -79,7 +82,7 @@ func getPromotion(offset int) *Promotion {
 		log.Fatal(err)
 	}
 
-	json.Unmarshal(body, &prom)
+	json.Unmarshal(body, prom)
 
-	return &prom
+	return prom
 }
