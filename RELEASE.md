@@ -5,7 +5,7 @@
 ### FEATURES:
 
 * Fix number max of goroutines (200)
-* Fix context with go-github
+* Fix context with go-github import
 * Fix new login implementation
 * Add wildcard to test all locations in one exec
 * Fix year in intranet URI bc bigint dont update the endpoint
